@@ -21,3 +21,15 @@ end as description,
 f.price
 from fruit f;
 
+INSERT INTO employee_backup (id, name, phone, salary, email, department_id, start_date)
+VALUES
+    (1, 'Ye Htet Aung', '09886932803', 600000.00, 'ye.ht3t@email.com', 1, '2025-03-15'),
+    (2, 'Htet Htoo Aung', '09799103303', 600000.00, 'htet.ht00@email.com', 1, '2025-03-15'),
+    (3, 'Thiha Naing', '09984303306', 600000.00, 'thiha.n@ing@email.com', 1, '2025-03-15'),
+    (5, 'Mya Thein Han', '09772365740', 900000.00, 'my@.th3in@email.com', 1, '2025-03-15');
+
+
+select 
+salary,
+count( name )
+from employee group by salary;
