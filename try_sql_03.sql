@@ -8,7 +8,9 @@ photo varchar(200),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP 
 );
+--modify column
 alter table product MODIFY column price DECIMAL(10,2) not null;
+--insert data
 INSERT INTO customer(name,phone,email,address,photo)values('Ye Htet Aung','09886932803','yha.@.22.@gmail.com','Mingalardon Township,Yangon','');
 INSERT INTO customer(name,phone,email,address,photo)values('Htet Htoo Aung','09665822371','hha.@.22.@gmail.com','Mingalardon Township,Yangon','hha.jpg');
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,8 +53,11 @@ ordered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN key( customer_id ) REFERENCES customer(id) on DELETE CASCADE,
 FOREIGN KEY( product_id ) REFERENCES product(id) on DELETE CASCADE
 );
+--add column
 alter table orderItem add column quantity int not null;
+--update data
 update orderItem set quantity = 2 where id = 3 ;
+
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 1 );
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 7 );
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 9 );
