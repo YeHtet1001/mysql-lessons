@@ -1,3 +1,4 @@
+--database=> dev_test_db
 --create department table 
 create table department(
  id int not null primary key auto_increment,
