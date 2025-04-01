@@ -13,6 +13,7 @@ alter table product MODIFY column price DECIMAL(10,2) not null;
 --insert data
 INSERT INTO customer(name,phone,email,address,photo)values('Ye Htet Aung','09886932803','yha.@.22.@gmail.com','Mingalardon Township,Yangon','');
 INSERT INTO customer(name,phone,email,address,photo)values('Htet Htoo Aung','09665822371','hha.@.22.@gmail.com','Mingalardon Township,Yangon','hha.jpg');
+INSERT INTO customer(name,phone,email,address,photo)values('Hein Min Lwin','09665822372','hml.@.23.@gmail.com','Hlaing Township,Yangon','hml.jpg');
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 create table product(
 id int not null auto_increment PRIMARY KEY,
@@ -62,6 +63,9 @@ insert orderItem( customer_id , product_id ) VALUES ( 1 , 1 );
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 7 );
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 9 );
 insert orderItem( customer_id , product_id ) VALUES ( 1 , 10 );
+insert orderItem( customer_id , product_id , quantity ) VALUES ( 2 , 2 , 1);
+insert orderItem( customer_id , product_id , quantity ) VALUES ( 2 , 3 ,1);
+insert orderItem( customer_id , product_id , quantity ) VALUES ( 2 , 4 ,1);
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --for testing query
@@ -111,3 +115,31 @@ on o.product_id = p.id
 left join customer c
 on o.customer_id = c.id
 GROUP by c.name , o.ordered_at ;
+
+select 
+p.product ,
+sum( o.quantity ) as total
+FROM
+product p
+left join 
+orderItem o
+on p.id = o.product_id
+GROUP by p.product;
+
+select 
+c.name,
+p.product,
+o.quantity
+FROM
+customer c
+left join
+orderItem o
+on c.id = o.customer_id 
+left join
+product p
+on p.id = o.product_id
+GROUP BY c.name , p.product , o.quantity
+order by o.quantity desc
+;
+
+
