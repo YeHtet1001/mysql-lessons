@@ -28,6 +28,10 @@ VALUES
     (3, 'Thiha Naing', '09984303306', 600000.00, 'thiha.n@ing@email.com', 1, '2025-03-15'),
     (5, 'Mya Thein Han', '09772365740', 900000.00, 'my@.th3in@email.com', 1, '2025-03-15');
 
+select 
+* 
+FROM
+department
 
 select 
 salary,
