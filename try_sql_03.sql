@@ -129,7 +129,9 @@ GROUP by p.product;
 select 
 c.name,
 p.product,
-o.quantity
+max(p.price) as price,
+max(p.category) as category,
+sum(o.quantity) as total
 FROM
 customer c
 left join
@@ -142,4 +144,17 @@ GROUP BY c.name , p.product , o.quantity
 order by o.quantity desc
 ;
 
-
+SELECT 
+    c.name,
+    p.product,
+    p.price,
+    p.category,
+    o.quantity
+FROM
+    customer c
+LEFT JOIN
+    orderItem o ON c.id = o.customer_id 
+LEFT JOIN
+    product p ON p.id = o.product_id
+ORDER BY 
+    o.quantity DESC;
